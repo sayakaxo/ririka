@@ -117,7 +117,7 @@ async def slowmode(ctx, seconds: int):
     await ctx.channel.edit(slowmode_delay=seconds)
     await ctx.send(f"I set the slowmode in this channel to {seconds} seconds!")
 
-@client.command(aliases=['purge','c'])
+@client.command(aliases=['p','c'])
 @commands.has_permissions(kick_members=True)
 async def clear(ctx, amount=2):
 	await ctx.channel.purge(limit=amount)
@@ -193,7 +193,7 @@ async def on_command_error(ctx,error):
 	if isinstance(error,commands.MissingPermissions):
 		await ctx.send("You don't have permissions to do that, " + ctx.author.mention + "!")
 	if isinstance(error,commands.MissingRequiredArgument):
-		await ctx.send(ctx.author.mention + " is trying to call a command but forgot to add something to the command!")
+		await ctx.send("I'm sorry, you may have... forgotten to add something to the command. Please try again.")
 
 	else:
 		traceback.print_exception(type(error), error, error.__traceback__)
